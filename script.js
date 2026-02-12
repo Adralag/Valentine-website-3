@@ -234,9 +234,29 @@ function setupMusicPlayer() {
         if (bgMusic.paused) {
             bgMusic.play();
             musicToggle.textContent = config.music.stopText;
+            musicToggle.classList.add('playing');
         } else {
             bgMusic.pause();
             musicToggle.textContent = config.music.startText;
+            musicToggle.classList.remove('playing');
         }
+    });
+
+    // Update button state if music ends
+    bgMusic.addEventListener('ended', () => {
+        musicToggle.textContent = config.music.startText;
+        musicToggle.classList.remove('playing');
+    });
+
+    // Update button state on play
+    bgMusic.addEventListener('play', () => {
+        musicToggle.textContent = config.music.stopText;
+        musicToggle.classList.add('playing');
+    });
+
+    // Update button state on pause
+    bgMusic.addEventListener('pause', () => {
+        musicToggle.textContent = config.music.startText;
+        musicToggle.classList.remove('playing');
     });
 } 

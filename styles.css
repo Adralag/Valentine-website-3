@@ -301,7 +301,7 @@ h2 {
 }
 
 .music-btn {
-    background: var(--primary-color);
+    background: var(--button-color);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -310,9 +310,42 @@ h2 {
     font-size: 16px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .music-btn:hover {
-    transform: scale(1.05);
-    background: var(--secondary-color);
+    transform: scale(1.08);
+    background: var(--button-hover);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.music-btn:active {
+    transform: scale(0.98);
+}
+
+.music-btn.playing {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.5);
+}
+
+#jumping-vibe {
+    width: 150px;
+    height: auto;
+    position: fixed;
+    z-index: 1000;
+    pointer-events: auto; /* Allows it to be "clickable" or "touchable" */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Adds a little "bounce" to the move */
+    cursor: pointer;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.7);
+        transform: scale(1.02);
+    }
 } 
